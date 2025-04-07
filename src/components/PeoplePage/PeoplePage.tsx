@@ -35,7 +35,18 @@ export const PeoplePage = () => {
   }, []);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <main className="section">
+        <div className="container">
+          <h1 className="title">People Page</h1>
+          <div className="block">
+            <div className="box table-container">
+              <Loader />
+            </div>
+          </div>
+        </div>
+      </main>
+    );
   }
 
   return (
