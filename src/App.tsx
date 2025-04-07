@@ -1,6 +1,6 @@
-import { Loader } from './components/Loader';
-
 import './App.scss';
+import { NavLink, Outlet } from 'react-router-dom';
+import cn from 'classnames';
 
 export const App = () => (
   <div data-cy="app">
@@ -12,21 +12,35 @@ export const App = () => (
     >
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="#/">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => {
+              return cn('navbar-item', {
+                'has-background-grey-lighter': isActive,
+              });
+            }}
+          >
             Home
-          </a>
+          </NavLink>
 
-          <a
-            className="navbar-item has-background-grey-lighter"
-            href="#/people"
+          <NavLink
+            to="/people"
+            className={({ isActive }) => {
+              return cn('navbar-item', {
+                'has-background-grey-lighter': isActive,
+              });
+            }}
           >
             People
-          </a>
+          </NavLink>
         </div>
       </div>
     </nav>
 
-    <main className="section">
+    <Outlet />
+
+    {/* <main className="section">
       <div className="container">
         <h1 className="title">Home Page</h1>
         <h1 className="title">People Page</h1>
@@ -162,6 +176,6 @@ export const App = () => (
           </div>
         </div>
       </div>
-    </main>
+    </main> */}
   </div>
 );
